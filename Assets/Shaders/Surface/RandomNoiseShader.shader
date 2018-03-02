@@ -19,6 +19,7 @@
 			float2 uv_MainTex;
 		};
 		
+		// https://qiita.com/shimacpyon/items/d15dee44a0b8b3883f76
 		float random(fixed2 p) {
     		return frac(sin(dot(p, fixed2(12.9898, 78.233))) * 43758.5453);
 		}
