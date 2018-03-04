@@ -24,23 +24,27 @@
 		}
 		
 		float noise(fixed2 st) {
+		    // 小数部を切り捨て
 		    fixed2 p = floor(st);
 		    return random(p);
 		}
 		
 		float2 valueNoise(fixed2 st) {
+		    // 小数部を切り捨て
 		    fixed2 p = floor(st);
+		    // 整数部を切り捨て
 		    fixed2 f = frac(st);
+		    // これは補完の式
+		    fixed2 u = f * f * (3.0 - 2.0 * f);
 		    
+		    // ブロックの四隅の色
 		    float v00   = random(p + fixed2(0, 0));
 		    float v10   = random(p + fixed2(1, 0));
 		    float v01   = random(p + fixed2(0, 1));
 		    float v11   = random(p + fixed2(1, 1));
 		    
-		    fixed2 u = f * f * (3.0 - 2.0 * f);
-		    
 		    float v0010 = lerp(v00, v10, u.x);
-		    float v0111 = lerp(v01,  v11, u.x);
+		    float v0111 = lerp(v01, v11, u.x);
 		    return lerp(v0010, v0111, u.y);
 		}
 

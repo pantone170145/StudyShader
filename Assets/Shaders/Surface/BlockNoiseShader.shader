@@ -24,6 +24,7 @@
 		}
 		
 		float noise(fixed2 st) {
+		    // 小数部を切り捨て
 		    fixed2 p = floor(st);
 		    return random(p);
 		}
