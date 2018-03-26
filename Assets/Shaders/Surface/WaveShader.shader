@@ -21,10 +21,12 @@
 
 		void vert(inout appdata_full v, out Input o)
 		{
+			// oを初期化
 			UNITY_INITIALIZE_OUTPUT(Input, o);
+			// 時間とX座標を元に、Y軸に使う係数を算出
 			float amp = 0.5 * sin(_Time * 100 + v.vertex.x * 100);
+			// Y軸のみに適用
 			v.vertex.xyz = float3(v.vertex.x, v.vertex.y + amp, v.vertex.z);
-
 		}
 
 		void surf (Input IN, inout SurfaceOutput o) {
